@@ -1,100 +1,99 @@
 {
-	"kind": "Template",
-	"apiversion": "v1",
-	"metadata": {
-		"name": "hello-openshift",
-		"creationTimestamp": null,
-		"annotations": {
-			"description": "hello-openshift",
-		}
-	},
-	"objects": [
-		{
-			"kind": "Pod",
-			"apiversion": "v1",
-			"metadata": {
-				"name": "hello-pod",
-				"labels": {
-					"name": "hello-openshift"
-				}
-			},
-			"spec": {
-				"containers": [
-					{
-						"name": "hello-openshift",
-						"image": "openshift/hello-openshift",
-						"ports": [
-							{
-								"containerport": 8080,
-								"protocol": "TCP"	
-							}
-							
-						],
-						"ressources": {},
-						"volumeMounts": [
-		          			{
-		            			"name":"tmp",
-		            			"mountPath":"/tmp"
-		          			}
-		        		],
-						"terminationMessagePath": "/dev/termination-log",
-						"imagePullPolicy": "IfNotPresent",
-						"capabilities": {},
-						"securityContext": {
-							"capabilities": {},
-							"privileged": false
-						}
-					}
-				],
-				"volumes": [
-		      		{
-		        		"name":"tmp",
-		        		"emptyDir": {}
-		      		}
-		    	],
-				"restartPolicy": "Always",
-				"dnsPolicy": "ClusterFirst"
-			}
-		},
-		{
-			"kind": "service",
-			"apiversion": "v1",
-			"metadata": {
-				"name": "hello-openshift"
-			},
-			"spec": {
-				"ports": [
-					{
-						"protocol": "TCP",
-						"port": 27017,
-						"targetPort": 8080,
-						"nodePort": 0
-					}
-				],
-				"selector": {
-					"name": "hello-openshift"
-				},
-				"portalIP": "",
-				"type": "ClusterIP",
-				"sessionAffinity": "None"
-			}
-		},
-		{
-			"kind": "Route",
-			"apiversion": "v1",
-			"metadata": {
-				"name": "hello-route"
-			},
-			"spec": {
-				"host": "hello-openshift.v3.rhcloud.com",
-				"to": {
-					"kind": "Service",
-					"name": "hello-openshift"
-				}
-			}
-		}
-	],
-  	"labels": {
-    	"template": "application-template-stibuild"
-  	}
+  "kind": "Template",
+  "apiversion": "v1",
+  "metadata": {
+    "name": "hello-openshift",
+    "creationTimestamp": null,
+    "annotations": {
+      "description": "hello-openshift"
+    }
+  },
+  "objects": [
+    {
+      "kind": "Pod",
+      "apiversion": "v1",
+      "metadata": {
+        "name": "hello-pod",
+        "labels": {
+          "name": "hello-openshift"
+        }
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "hello-openshift",
+            "image": "openshift/hello-openshift",
+            "ports": [
+              {
+                "containerport": 8080,
+                "protocol": "TCP"
+              }
+            ],
+            "ressources": {},
+            "volumeMounts": [
+              {
+                "name": "tmp",
+                "mountPath": "/tmp"
+              }
+            ],
+            "terminationMessagePath": "/dev/termination-log",
+            "imagePullPolicy": "IfNotPresent",
+            "capabilities": {},
+            "securityContext": {
+              "capabilities": {},
+              "privileged": false
+            }
+          }
+        ],
+        "volumes": [
+          {
+            "name": "tmp",
+            "emptyDir": {}
+          }
+        ],
+        "restartPolicy": "Always",
+        "dnsPolicy": "ClusterFirst"
+      }
+    },
+    {
+      "kind": "service",
+      "apiversion": "v1",
+      "metadata": {
+        "name": "hello-openshift"
+      },
+      "spec": {
+        "ports": [
+          {
+            "protocol": "TCP",
+            "port": 27017,
+            "targetPort": 8080,
+            "nodePort": 0
+          }
+        ],
+        "selector": {
+          "name": "hello-openshift"
+        },
+        "portalIP": "",
+        "type": "ClusterIP",
+        "sessionAffinity": "None"
+      }
+    },
+    {
+      "kind": "Route",
+      "apiversion": "v1",
+      "metadata": {
+        "name": "hello-route"
+      },
+      "spec": {
+        "host": "hello-openshift.v3.rhcloud.com",
+        "to": {
+          "kind": "Service",
+          "name": "hello-openshift"
+        }
+      }
+    }
+  ],
+  "labels": {
+    "template": "application-template-stibuild"
+  }
 }
