@@ -57,7 +57,7 @@
     },
     {
       "kind": "Service",
-      "apiversion": "v1",
+      "apiVersion": "v1",
       "metadata": {
         "name": "hello-openshift"
       },
@@ -80,7 +80,7 @@
     },
     {
       "kind": "Route",
-      "apiversion": "v1",
+      "apiVersion": "v1beta3",
       "metadata": {
         "name": "hello-route"
       },
