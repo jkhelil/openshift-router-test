@@ -56,7 +56,7 @@
       }
     },
     {
-      "kind": "service",
+      "kind": "Service",
       "apiversion": "v1",
       "metadata": {
         "name": "hello-openshift"
