@@ -94,6 +94,6 @@
     }
   ],
   "labels": {
-    "template": "application-template-stibuild"
+    "template": "hello-openshift"
   }
 }
