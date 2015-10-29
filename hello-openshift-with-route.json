@@ -93,3 +93,8 @@
 				}
 			}
 		}
+	],
+  	"labels": {
+    	"template": "application-template-stibuild"
+  	}
+}
